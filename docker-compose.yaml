@@ -92,6 +92,19 @@ services:
       - monit
       - api
 
+  grafana-forum-api:
+    image: grafana/grafana
+    container_name: grafana-forum-api
+    volumes:
+      - ./grafana:/var/lib/grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    networks:
+      - monit
+    depends_on:
+      - prometheus-forum-api
+
   client-forum-api:
     build:
       context: ./client/
@@ -100,7 +113,6 @@ services:
     container_name: client-forum-api
     restart: unless-stopped
     networks:
-    - proxy
+      - proxy
     depends_on:
-    - prometheus-forum-api
-    
+      - grafana-forum-api
