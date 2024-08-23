@@ -1,4 +1,7 @@
 /prometheus/prometheus_data
 /prometheus/prometheus_data/wal
 /prometheus/prometheus_data/chunks_head
-/grafana/*
+/grafana/csv/*
+/grafana/pdf/*
+/grafana/plugins/*
+/grafana/png/*
